@@ -2,6 +2,7 @@ from database import get_db_connection
 from datetime import datetime
 import json
 import uuid
+import os
 
 
 
@@ -16,7 +17,7 @@ def get_all_students():
     try:
         cursor = connection.cursor(dictionary=True)
         try:
-            cursor.execute("SELECT * FROM Student")
+            cursor.execute("SELECT * FROM student")
             return cursor.fetchall()
         finally:
             cursor.close()

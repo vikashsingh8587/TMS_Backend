@@ -1,14 +1,16 @@
 import mysql.connector
 import uuid
 import json
+import os
 
 def get_db_connection():
     connection = mysql.connector.connect(
-       host="localhost",
-        port=3306,
-        user="root",
-        password="1234",
-        database="TMC"
+        host=os.getenv("DB_HOST"),
+        port=int(os.getenv("DB_PORT")),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
+        ssl_disabled=False
     )
 
     return connection
